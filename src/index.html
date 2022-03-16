@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div>
+    Width: <input id="width" type="range"min="0" max="1000">
+    Height: <input id="height" type="range"min="0" max="1000">
+  </div>
+  <div>
+    Darken: <input id="darken" type="range"min="0" max="100">
+    Lighten: <input id="lighten" type="range"min="0" max="100">
+    Diffuse: <input id="diffuse" type="range"min="0" max="100">
+  </div>
+  <textarea id="export"></textarea>
+  <div id="render"></div>
+  <script src="../node_modules/chroma-js/chroma.js"></script>
+  <script src="../node_modules/@svgdotjs/svg.js/dist/svg.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
