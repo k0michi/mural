@@ -4,7 +4,7 @@
     "chroma-js": "^2.4.2"
   },
   "scripts": {
-    "clean": "rm dist/bundle.js",
+    "clean": "rm dist/*",
     "build.dev": "webpack --mode development",
     "build.prod": "webpack --mode production",
     "serve.dev": "webpack serve --mode development",

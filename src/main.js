@@ -29,9 +29,12 @@ window.changePattern = (pattern) => {
     case 2:
       renderPattern = renderDiamonds;
       break;
-    case 3:
-      renderPattern = renderBricks;
-      break;
+      case 3:
+        renderPattern = renderBricks;
+        break;
+        case 4:
+          renderPattern = renderTriangles2;
+          break;
   }
 
   renderPattern();
@@ -226,6 +229,55 @@ function renderTriangles() {
       c = (c + 1) % 2;
     }
   }
+}
+
+function renderTriangles2() {
+  draw.clear();
+
+  const WIDTH = 16;
+
+  const NY = Math.ceil(imageHeight / WIDTH);
+  const NX = Math.ceil(imageWidth / WIDTH);
+
+  const f1 = chroma.scale(chroma.brewer.Spectral);
+  const f2 = f1;
+
+  for (let i = 0; i < NX; i++) {
+    const baseX = i * WIDTH;
+
+    for (let j = 0; j < NY; j++) {
+      const y = j * WIDTH;
+
+      const p1 = [baseX, y];
+      const p2 = [baseX + WIDTH, y];
+      const p3 = [baseX + WIDTH, y + WIDTH];
+      const p4 = [baseX, y + WIDTH];
+
+      const c = random('cut', i, j);
+
+      if (c < 0.5) {
+        drawTriangle(p1, p2, p3, genColor(i, j, NX, NY, f1, f2));
+        drawTriangle(p1, p3, p4, genColor(i + 0.5, j + 0.5, NX, NY, f1, f2));
+      } else {
+        drawTriangle(p1, p2, p4, genColor(i, j, NX, NY, f1, f2));
+        drawTriangle(p2, p3, p4, genColor(i + 0.5, j + 0.5, NX, NY, f1, f2));
+      }
+    }
+  }
+}
+
+function genColor(x, y, width, height, f1, f2) {
+  const r1 = (random('diffuse1', x, y) - .5) * diffuse;
+  const r2 = (random('diffuse2', x, y) - .5) * diffuse;
+  const c5 = f1(y / (height - 1) + r1);
+  const c6 = f2(x / (width - 1) + r2);
+  let color = chroma.mix(c5, c6, 0.5, 'lab');
+  // let color = f1((i + j) / (NY - 1 + NX - 1) + r1);
+
+  color = color.darken(darkness * random('darkness', x, y));
+  color = color.brighten(lightness * random('lightness', x, y));
+
+  return color;
 }
 
 const randomTable = {};
