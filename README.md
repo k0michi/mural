@@ -1,0 +1,3 @@
+# Mural
+
+![Example](example.svg)
