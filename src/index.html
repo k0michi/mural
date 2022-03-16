@@ -7,6 +7,12 @@
 </head>
 <body>
   <div>
+    <input type="radio" name="pattern" oninput="changePattern(0)" id="pattern-0"><label for="pattern-0">Triangles</label>
+    <input type="radio" name="pattern" oninput="changePattern(1)" id="pattern-1"><label for="pattern-1">Rectangles</label>
+    <input type="radio" name="pattern" oninput="changePattern(2)" id="pattern-2"><label for="pattern-2">Diamonds</label>
+    <input type="radio" name="pattern" oninput="changePattern(3)" id="pattern-3"><label for="pattern-3">Bricks</label>
+  </div>
+  <div>
     Width: <input id="width" type="range"min="0" max="1000">
     Height: <input id="height" type="range"min="0" max="1000">
   </div>

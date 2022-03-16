@@ -7,9 +7,30 @@ let darkness = 8;
 let lightness = 2;
 let diffuse = 0.1;
 
+let renderPattern = renderTriangles;
+
+function changePattern(pattern) {
+  switch (pattern) {
+    case 0:
+      renderPattern = renderTriangles;
+      break;
+    case 1:
+      renderPattern = renderRectangles;
+      break;
+    case 2:
+      renderPattern = renderDiamonds;
+      break;
+    case 3:
+      renderPattern = renderBricks;
+      break;
+  }
+
+  renderPattern();
+}
+
 window.addEventListener('load', () => {
   draw = SVG().size(imageWidth, imageHeight).addTo(document.getElementById('render'));
-  render();
+  renderPattern();
 
   const widthEl = document.getElementById('width');
   widthEl.value = imageWidth;
@@ -17,7 +38,7 @@ window.addEventListener('load', () => {
   widthEl.addEventListener('input', e => {
     imageWidth = parseInt(e.target.value);
     draw.size(imageWidth, imageHeight);
-    requestAnimationFrame(render);
+    requestAnimationFrame(renderPattern);
   });
 
   const heightEl = document.getElementById('height');
@@ -26,7 +47,7 @@ window.addEventListener('load', () => {
   heightEl.addEventListener('input', e => {
     imageHeight = parseInt(e.target.value);
     draw.size(imageWidth, imageHeight);
-    requestAnimationFrame(render);
+    requestAnimationFrame(renderPattern);
   });
 
   const darkenEl = document.getElementById('darken');
@@ -34,7 +55,7 @@ window.addEventListener('load', () => {
 
   darkenEl.addEventListener('input', e => {
     darkness = parseInt(e.target.value);
-    requestAnimationFrame(render);
+    requestAnimationFrame(renderPattern);
   });
 
   const lightenEl = document.getElementById('lighten');
@@ -42,7 +63,7 @@ window.addEventListener('load', () => {
 
   lightenEl.addEventListener('input', e => {
     lightness = parseInt(e.target.value);
-    requestAnimationFrame(render);
+    requestAnimationFrame(renderPattern);
   });
 
   const diffuseEl = document.getElementById('diffuse');
@@ -50,11 +71,11 @@ window.addEventListener('load', () => {
 
   diffuseEl.addEventListener('input', e => {
     diffuse = parseInt(e.target.value) / 100;
-    requestAnimationFrame(render);
+    requestAnimationFrame(renderPattern);
   });
 });
 
-function render() {
+function renderBricks() {
   draw.clear();
 
   const BRICK_WIDTH = 24;
