@@ -1,5 +1,7 @@
 import chroma from 'chroma-js';
-import {SVG} from '@svgdotjs/svg.js';
+import { SVG } from '@svgdotjs/svg.js';
+
+import * as utils from './utils';
 
 let draw;
 
@@ -12,7 +14,11 @@ let diffuse = 0.1;
 
 let renderPattern = renderTriangles;
 
-function changePattern(pattern) {
+window.clickSave = () => {
+  utils.saveFile('export.svg', draw.svg());
+}
+
+window.changePattern = (pattern) => {
   switch (pattern) {
     case 0:
       renderPattern = renderTriangles;

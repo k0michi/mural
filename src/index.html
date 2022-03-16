@@ -1,27 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Mural</title>
 </head>
+
 <body>
   <div>
-    <input type="radio" name="pattern" oninput="changePattern(0)" id="pattern-0"><label for="pattern-0">Triangles</label>
-    <input type="radio" name="pattern" oninput="changePattern(1)" id="pattern-1"><label for="pattern-1">Rectangles</label>
+    <input type="radio" name="pattern" oninput="changePattern(0)" id="pattern-0"><label
+      for="pattern-0">Triangles</label>
+    <input type="radio" name="pattern" oninput="changePattern(1)" id="pattern-1"><label
+      for="pattern-1">Rectangles</label>
     <input type="radio" name="pattern" oninput="changePattern(2)" id="pattern-2"><label for="pattern-2">Diamonds</label>
     <input type="radio" name="pattern" oninput="changePattern(3)" id="pattern-3"><label for="pattern-3">Bricks</label>
   </div>
   <div>
-    Width: <input id="width" type="range"min="0" max="1000">
-    Height: <input id="height" type="range"min="0" max="1000">
+    Width: <input id="width" type="range" min="0" max="1000">
+    Height: <input id="height" type="range" min="0" max="1000">
   </div>
   <div>
-    Darken: <input id="darken" type="range"min="0" max="100">
-    Lighten: <input id="lighten" type="range"min="0" max="100">
-    Diffuse: <input id="diffuse" type="range"min="0" max="100">
+    Darken: <input id="darken" type="range" min="0" max="100">
+    Lighten: <input id="lighten" type="range" min="0" max="100">
+    Diffuse: <input id="diffuse" type="range" min="0" max="100">
   </div>
-  <textarea id="export"></textarea>
+  <button onclick="clickSave()">Save</button>
   <div id="render"></div>
 </body>
+
 </html>
