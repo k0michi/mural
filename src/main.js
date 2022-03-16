@@ -1,3 +1,6 @@
+import chroma from 'chroma-js';
+import {SVG} from '@svgdotjs/svg.js';
+
 let draw;
 
 let imageWidth = 800;
